@@ -52,7 +52,20 @@ with db.connect() as connection:
     # select_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from the "Artist" table
-    select_query = artist_table.select().with_only_columns(artist_table.c.name)
+    # select_query = artist_table.select().with_only_columns(artist_table.c.name)
+
+    # Query 3 - Select only 'Queen' from the 'Artist' table
+    # select_query = artist_table.select().where(artist_table.c.name == 'Queen')
+
+    # Query 4 - Select only by 'artist_id' #51 from the 'Artist' table
+    # select_query = artist_table.select().where(artist_table.c.artist_id == 51)
+
+    # Query 4 - Select only the albums with 'artist_id' #51 on the 'album' table
+    # select_query = album_table.select().where(album_table.c.artist_id == 51)
+
+    # Query 5 - Select only the     tracks where 'composer' is 'Queen;
+    select_query = track_id.select().where(track_id.c.composer == 'Queen')
+    
 
     results = connection.execute(select_query)
     for result in results:
